@@ -4,3 +4,4 @@ def uppercase(str):
         offset = 32 if 97 <= ord(c) <= 122 else 0
         print("{:c}".format(ord(c) - offset), end="")
     print("")
+    
