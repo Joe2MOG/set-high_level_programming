@@ -1,3 +1,3 @@
-# SET High Level Programming
+# Python - import & modules
 
-This repository contains coding projects for SET's High Level Programming course, covering Python fundamentals, shell scripting, and C data structures.
+Covers Python's module system: importing functions and variables from other files, inspecting modules with dir(), command-line arguments via sys.argv, and writing output without print().
