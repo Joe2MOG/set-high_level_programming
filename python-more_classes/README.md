@@ -12,7 +12,7 @@ by integrating robust exception handling and data validation using Python's
   custom InvalidProductDataError exception, and test case for invalid input
 
 ## AI Tool Used
-ChatGPT was used to scaffold the refactored solution. The prompt explicitly
+Gemini was used to scaffold the refactored solution. The prompt explicitly
 requested @property decorator implementation, a custom exception class, and
 a detailed explanation of data integrity and encapsulation design choices.
 
