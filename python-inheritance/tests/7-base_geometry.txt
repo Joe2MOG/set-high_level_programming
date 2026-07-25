@@ -1,0 +1,8 @@
+>>> bg = __import__('7-base_geometry').BaseGeometry()
+>>> bg.integer_validator("side", 5)
+>>> bg.integer_validator("side", 0)
+Traceback (most recent call last):
+ValueError: side must be greater than 0
+>>> bg.integer_validator("side", "hello")
+Traceback (most recent call last):
+TypeError: side must be an integer
