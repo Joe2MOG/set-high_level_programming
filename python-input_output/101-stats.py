@@ -19,19 +19,27 @@ try:
     for line in sys.stdin:
         line_count += 1
         parts = line.split()
-        # Accept any line with at least two tokens; try the last two as code and size
+        # Independently parse size (last token) and status code (second-to-last)
         if len(parts) >= 2:
+            # Process size
             try:
                 size = int(parts[-1])
-                code = int(parts[-2])
                 total_size += size
-                if code in valid_codes:
-                    status_counts[code] = status_counts.get(code, 0) + 1
             except ValueError:
-                pass
+                size = None
+
+            # Process status code (unrelated to size)
+            if len(parts) >= 2:
+                try:
+                    code = int(parts[-2])
+                    if code in valid_codes:
+                        status_counts[code] = status_counts.get(code, 0) + 1
+                except ValueError:
+                    pass
+
         if line_count % 10 == 0:
             print_stats()
-    # Final summary after all lines (even if none)
+    # Final summary after all lines
     print_stats()
 except KeyboardInterrupt:
     print_stats()
