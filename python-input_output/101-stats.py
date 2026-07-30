@@ -7,17 +7,20 @@ status_counts = {}
 valid_codes = [200, 301, 400, 401, 403, 404, 405, 500]
 line_count = 0
 
+
 def print_stats():
+    """Print accumulated statistics."""
     print("File size: {:d}".format(total_size))
     for code in sorted(status_counts):
         print("{:d}: {:d}".format(code, status_counts[code]))
+
 
 try:
     for line in sys.stdin:
         line_count += 1
         parts = line.split()
-        # Correct minimum token count: IP - [date] "GET /path HTTP/1.1" code size → 8 tokens
-        if len(parts) >= 8:
+        # Accept any line with at least two tokens; try the last two as code and size
+        if len(parts) >= 2:
             try:
                 size = int(parts[-1])
                 code = int(parts[-2])
@@ -28,7 +31,7 @@ try:
                 pass
         if line_count % 10 == 0:
             print_stats()
-    # Final summary after all lines (even if empty)
+    # Final summary after all lines (even if none)
     print_stats()
 except KeyboardInterrupt:
     print_stats()
