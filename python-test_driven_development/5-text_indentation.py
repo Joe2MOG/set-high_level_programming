@@ -17,11 +17,12 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     line = ""
-    for ch in text:
+    for i, ch in enumerate(text):
         line += ch
         if ch in ".?:":
             print(line.strip())
-            print()
+            if i != len(text) - 1:
+                print()
             line = ""
     if line.strip():
         print(line.strip(), end="")

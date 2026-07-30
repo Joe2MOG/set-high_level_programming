@@ -17,8 +17,8 @@ def matrix_divided(matrix, div):
                    if rows have different sizes, or if div is not a number.
         ZeroDivisionError: if div equals 0.
     """
-    if (not isinstance(matrix, list) or
-        not all(isinstance(row, list) for row in matrix)):
+    if not isinstance(matrix, list) \
+            or not all(isinstance(row, list) for row in matrix):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
     if not all(isinstance(el, (int, float)) for row in matrix for el in row):
