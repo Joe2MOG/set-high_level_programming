@@ -154,3 +154,43 @@ class Base:
             t.end_fill()
 
         turtle.done()
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a window and draws all Rectangles and Squares."""
+        import turtle
+        import time
+
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#2c3e50")
+        turt.pensize(3)
+        turt.shape("turtle")
+
+        turt.color("#e74c3c")
+        for rect in list_rectangles:
+            turt.showturtle()
+            turt.up()
+            turt.goto(rect.x, rect.y)
+            turt.down()
+            for _ in range(2):
+                turt.forward(rect.width)
+                turt.left(90)
+                turt.forward(rect.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turt.color("#1abc9c")
+        for sq in list_squares:
+            turt.showturtle()
+            turt.up()
+            turt.goto(sq.x, sq.y)
+            turt.down()
+            for _ in range(2):
+                turt.forward(sq.width)
+                turt.left(90)
+                turt.forward(sq.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        time.sleep(5)
+        turtle.Screen().bye()
