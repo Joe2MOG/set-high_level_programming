@@ -28,3 +28,17 @@ class TestBase(unittest.TestCase):
         d = [{"id": 1, "name": "test"}]
         expected = json.dumps(d)
         self.assertEqual(Base.to_json_string(d), expected)
+
+    def test_from_json_string_none(self):
+        self.assertEqual(Base.from_json_string(None), [])
+
+    def test_from_json_string_empty_list(self):
+        self.assertEqual(Base.from_json_string("[]"), [])
+
+    def test_from_json_string_one_dict(self):
+        result = Base.from_json_string('[{ "id": 89 }]')
+        self.assertEqual(result, [{"id": 89}])
+
+    def test_from_json_string_returns_list(self):
+        result = Base.from_json_string('[{ "id": 89 }]')
+        self.assertIsInstance(result, list)
