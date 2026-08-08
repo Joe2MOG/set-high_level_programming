@@ -2,6 +2,8 @@
 """Base class for managing ID attribute across all shapes."""
 import json
 import csv
+import turtle
+import random
 
 
 class Base:
@@ -104,3 +106,51 @@ class Base:
         except FileNotFoundError:
             pass
         return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Open a Turtle window and draw all rectangles and squares.
+
+        Args:
+            list_rectangles (list): list of Rectangle instances.
+            list_squares (list): list of Square instances.
+        """
+        # Set up the screen
+        screen = turtle.Screen()
+        screen.title("Almost a Circle - Drawing Shapes")
+        t = turtle.Turtle()
+        t.speed(0)      # fastest
+        t.hideturtle()
+
+        # Draw rectangles
+        t.color("blue")   # outline color
+        for rect in list_rectangles:
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            # Random fill color (blue shades)
+            t.fillcolor(random.random(), random.random(), random.random())
+            t.begin_fill()
+            for _ in range(2):
+                t.forward(rect.width)
+                t.left(90)
+                t.forward(rect.height)
+                t.left(90)
+            t.end_fill()
+
+        # Draw squares
+        t.color("red")
+        for square in list_squares:
+            t.penup()
+            t.goto(square.x, square.y)
+            t.pendown()
+            t.fillcolor(random.random(), random.random(), random.random())
+            t.begin_fill()
+            for _ in range(2):
+                t.forward(square.size)
+                t.left(90)
+                t.forward(square.size)
+                t.left(90)
+            t.end_fill()
+
+        turtle.done()
