@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-"""City class with relationship to State."""
+"""Defines the City class, linked to relationship_state's State."""
 from sqlalchemy import Column, Integer, String, ForeignKey
 from relationship_state import Base
 
 
 class City(Base):
-    """City class with state relationship."""
-    __tablename__ = 'cities'
-
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    """Represents a city, linked to the MySQL table cities."""
+    __tablename__ = "cities"
+    id = Column(Integer, primary_key=True, nullable=False,
+                autoincrement=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
-    state = relationship("State", back_populates="cities")
+    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
