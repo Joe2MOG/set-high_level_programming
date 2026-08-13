@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all City objects with their State, one query, using state relationship."""
+"""Lists City objects with their State, one query, using relationship."""
 import sys
 from relationship_state import Base, State
 from relationship_city import City
