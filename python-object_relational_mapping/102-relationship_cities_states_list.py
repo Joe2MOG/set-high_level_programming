@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Lists City objects with their State, one query, using relationship."""
+"""Lists all City objects from the database, showing each city's name
+alongside the name of the State it belongs to, using the state
+relationship defined on the City model rather than a manual join."""
 import sys
 from relationship_state import Base, State
 from relationship_city import City
